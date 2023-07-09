@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+* {font-family: 'Almarai', sans-serif; letter-spacing:normal !important;}
+
+.v-main, body, html {
+    background-color: #EEE;
+}
+
+.leaflet-control-attribution {
+    display: none !important;
+}
+.v-toast {
+    z-index: 1000000000000 !important;
+}
+.v-toolbar-title__placeholder {
+    white-space: normal !important;
+}
+.navd {
+   background-image: url("../public/bg.png");
+}
+
+.dp__menu {
+  direction: ltr;
+}
+
+.headerTitle {
+    padding: 5px;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 5px green solid;
+}
