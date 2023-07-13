@@ -63,6 +63,57 @@
           </v-row>
         </v-card>
       </v-col>
+      <v-col cols="12" md="3">
+        <v-card class="pa-2">
+          <v-row align="center">
+            <v-col>
+              <center>
+                <v-icon icon="mdi-memory" size="72" color="pink"></v-icon>
+                <h5>RAM</h5>
+              </center>
+            </v-col>
+            <v-col align="center" class="text-pink">
+              <h1 v-if="os != null" style="font-size: 52px;">
+                {{ ((os.memory - os.freeMemory) / os.memory).toFixed(2) }}%
+              </h1>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="3">
+        <v-card class="pa-2">
+          <v-row align="center">
+            <v-col>
+              <center>
+                <v-icon icon="mdi-cpu-64-bit" size="72" color="grey"></v-icon>
+                <h5>CPU</h5>
+              </center>
+            </v-col>
+            <v-col align="center" class="text-grey">
+              <h1 v-if="os != null" style="font-size: 52px;">
+                {{ (os.cpu).toFixed(2) }}%
+              </h1>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="3">
+        <v-card class="pa-2">
+          <v-row align="center">
+            <v-col>
+              <center>
+                <v-icon icon="mdi-database" size="72" color="indigo"></v-icon>
+                <h5>Storage</h5>
+              </center>
+            </v-col>
+            <v-col align="center" class="text-indigo">
+              <h1 v-if="os != null" style="font-size: 52px;">
+                {{ (100 - (((5000 - jobs.length) / 5000) * 100)).toFixed(2) }}%
+              </h1>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
       <v-col cols="12" md="12">
         <v-card class="pa-2">
           <h3 class="headerTitle">اخر 10 وظائف</h3>
@@ -108,6 +159,7 @@ export default {
     latestJobs: [],
     cvAds: [],
     jobAds: [],
+    os: null,
     chartData: null,
     chartOptions: {
       responsive: true
@@ -122,6 +174,7 @@ export default {
       this.$store.state.loading = true;
       this.users = (await this.axios.get('users')).data;
       this.jobs = (await this.axios.get('jobs')).data;
+      this.os = (await this.axios.get('os')).data;
       this.cvAds = (await this.axios.get("allCvAds")).data;
       this.jobAds = (await this.axios.get("allJobAds")).data;
       this.latestJobs = (await this.axios.get('jobs?order=createdAt&sort=DESC&limit=10')).data;

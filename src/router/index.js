@@ -45,6 +45,21 @@ const routes = [
     name: "notifications",
     component: () => import("../views/Notifications.vue"),
   },
+  {
+    path: "/prices",
+    name: "prices",
+    component: () => import("../views/AdPrices.vue"),
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("../views/Settings.vue"),
+  },
+  {
+    path: "/reports",
+    name: "reports",
+    component: () => import("../views/Reports.vue"),
+  },
 ];
 
 const router = createRouter({

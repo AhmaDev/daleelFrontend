@@ -97,9 +97,13 @@ export default {
       { title: "الاعلانات", route: "/ads", icon: "mdi-access-point" },
       { title: "الاشعارات", route: "/notifications", icon: "mdi-bell-outline" },
       { title: "المستخدمين", route: "/users", icon: "mdi-account-outline" },
+      { title: "اسعار الاعلانات", route: "/prices", icon: "mdi-cash" },
+      { title: "التقارير", route: "/reports", icon: "mdi-poll" },
+      { title: "الاعدادات", route: "/settings", icon: "mdi-cog" },
     ],
   }),
   mounted: function () {
+
     if (localStorage.getItem("userInfo")) {
       this.isLoggedIn = true;
       this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
