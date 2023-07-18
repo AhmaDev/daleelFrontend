@@ -50,6 +50,10 @@
                         <v-radio label="دكتوراة" value="دكتوراة"></v-radio>
                     </v-radio-group>
                 </v-card>
+                <v-card class="mt-5 pa-10">
+                    <v-textarea auto-grow variant="outlined" label="نص المنشور" :model-value="postData">
+                    </v-textarea>
+                </v-card>
             </v-col>
             <v-col cols="12" md="6">
                 <v-card class="pa-10 elevation-2">
@@ -143,6 +147,7 @@ export default {
         provinces: [],
         applications: [],
         ads: [],
+        postData: null,
     }),
     created: function () {
         this.fetch();
@@ -156,6 +161,7 @@ export default {
             this.categories = (await this.axios.get("categorys")).data
             this.provinces = (await this.axios.get("provinces")).data
             this.job.expireDate = this.$formatDate(this.job.expireDate);
+            this.postData = `📝 عنوان الوظيفة: ${this.job.jobTitle}\n🕐 آخر موعد للتقديم: ${this.job.expireDate}\n📍 عنوان الوظيفة: ${this.job.provinceName}\n🔍 الجنس المطلوب: ${this.job.gender == 'male' ? 'ذكر' : this.job.gender == 'female' ? 'انثئ' : 'كلاهما'}\n📲 لتحميل التطبيق: https://al-daleel.app/download\n🔗 لمشاهدة تفاصيل الوظيفة: https://share.al-daleel.app/${this.job.idJob} \n🛑 يجب عليك تحميل التطبيق لتتمكن من مشاهدة تفاصيل الوظيفة`
             this.$store.state.loading = false;
         },
         async deleteSkill(id) {
